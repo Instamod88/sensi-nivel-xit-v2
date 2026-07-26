@@ -1,11 +1,11 @@
 // ===============================
-// GERADOR PROFISSIONAL
+// GERADOR PROFISSIONAL V2
 // ===============================
 
-function hash(str){
+function hash(str) {
     let h = 0;
 
-    for(let i = 0; i < str.length; i++){
+    for (let i = 0; i < str.length; i++) {
         h = (h << 5) - h + str.charCodeAt(i);
         h |= 0;
     }
@@ -14,62 +14,79 @@ function hash(str){
 }
 
 // ===============================
-// DETECTAR iPHONE
+// VERIFICAR iPHONE
 // ===============================
 
-function ehIphone(marca){
-    return marca.toLowerCase() === 'apple';
+function ehIphone(marca) {
+    return marca.toLowerCase() === "apple";
 }
 
 // ===============================
-// CALCULAR BASE
+// DPI INTELIGENTE
 // ===============================
 
-function calcularBase(modelo){
+function calcularDPI(modelo) {
 
     const h = hash(modelo);
 
-    // 186 ~ 200
-    return 186 + (h % 15);
+    const dpi = [
+        480,
+        500,
+        520,
+        540,
+        560,
+        580,
+        600,
+        620,
+        640,
+        660,
+        680,
+        700
+    ];
+
+    return dpi[h % dpi.length];
+
 }
 
 // ===============================
-// CALCULAR DPI
+// BOTÃO DE TIRO
 // ===============================
 
-function calcularDPI(modelo){
+function calcularBotao(modelo) {
 
     const h = hash(modelo);
 
-    // 560 ~ 740
-    return 560 + (h % 181);
+    const botoes = [
+        34,
+        36,
+        38,
+        40,
+        42,
+        44,
+        46,
+        48,
+        50,
+        52,
+        54
+    ];
+
+    return botoes[h % botoes.length];
+
 }
 
 // ===============================
-// BOTÃO RECOMENDADO
+// GERAR SENSIBILIDADE
 // ===============================
 
-function calcularBotao(modelo){
+function gerarSensibilidade(marca, modelo) {
 
     const h = hash(modelo);
 
-    // 36 ~ 54
-    return 36 + (h % 19);
-}
-
-// ===============================
-// GERAR RESULTADO
-// ===============================
-
-function gerarSensibilidade(marca, modelo){
-
-    const base = calcularBase(modelo);
-
-    const geral = base;
-    const redDot = Math.max(170, base - 5);
-    const mira2x = Math.max(160, base - 12);
-    const mira4x = Math.max(145, base - 22);
-    const awm = 100 + (hash(modelo) % 16);
+    const geral = 185 + (h % 16);
+    const redDot = 180 + (h % 20);
+    const mira2x = 170 + (h % 21);
+    const mira4x = 155 + (h % 26);
+    const awm = 70 + (h % 31);
     const olhadinha = 200;
 
     const dpi = calcularDPI(modelo);
@@ -77,31 +94,35 @@ function gerarSensibilidade(marca, modelo){
 
     let html = `
         📱 <b>${modelo}</b><br>
-        🏷️ ${marca}<br><br>
+        🏷️ <b>${marca}</b><br><br>
 
-        🎯 <b>Geral:</b> ${geral}<br>
-        🔴 <b>Red Dot:</b> ${redDot}<br>
-        🔵 <b>Mira 2x:</b> ${mira2x}<br>
-        🟣 <b>Mira 4x:</b> ${mira4x}<br>
-        🎯 <b>AWM:</b> ${awm}<br>
-        👁️ <b>Olhadinha:</b> ${olhadinha}<br><br>
+        🎯 Geral: <b>${geral}</b><br>
+        ⚙️ Red Dot: <b>${redDot}</b><br>
+        ⚙️ Mira 2x: <b>${mira2x}</b><br>
+        ⚙️ Mira 4x: <b>${mira4x}</b><br>
+        ⚙️ AWM: <b>${awm}</b><br>
+        👁️ Olhadinha: <b>${olhadinha}</b><br><br>
     `;
 
-    // iPhone não mostra DPI
-    if(!ehIphone(marca)){
+    if (!ehIphone(marca)) {
+
         html += `
-            📏 <b>DPI Recomendada:</b> ${dpi}<br><br>
+        📏 DPI Recomendada: <b>${dpi}</b><br><br>
         `;
+
     } else {
+
         html += `
-            🍎 <b>iPhone:</b> não utiliza DPI<br><br>
+        🍎 iPhone não utiliza DPI.<br><br>
         `;
+
     }
 
     html += `
-        🎮 <b>Botão de tiro recomendado:</b> ${botao}<br><br>
+        🎮 Botão de tiro recomendado: <b>${botao}</b><br><br>
         ⚡ Configuração otimizada para puxada de capa.
     `;
 
     resultado.innerHTML = html;
+
 }
