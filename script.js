@@ -4,9 +4,11 @@
 
 const brand = document.getElementById("brand");
 const model = document.getElementById("model");
+const pesquisa = document.getElementById("pesquisa");
 const resultado = document.getElementById("resultado");
 const loading = document.getElementById("loading");
 const gerarBtn = document.getElementById("gerarBtn");
+
 
 // ===============================
 // CARREGAR MARCAS
@@ -31,6 +33,7 @@ function carregarMarcas(){
 
 carregarMarcas();
 
+
 // ===============================
 // CARREGAR MODELOS
 // ===============================
@@ -54,35 +57,45 @@ brand.addEventListener("change",()=>{
 
 });
 
+
 // ===============================
 // BOTÃO GERAR
 // ===============================
 
 gerarBtn.addEventListener("click",()=>{
 
-    if(!brand.value || !model.value){
+
+    let aparelhoDigitado = pesquisa.value.trim();
+
+
+    if(!aparelhoDigitado){
 
         resultado.innerHTML=`
-        ⚠️ Selecione uma marca e um aparelho.
+        ⚠️ Digite o nome do aparelho.
         `;
 
         return;
 
     }
 
+
     loading.style.display="block";
 
     resultado.innerHTML="";
+
 
     setTimeout(()=>{
 
         loading.style.display="none";
 
+
         gerarSensibilidade(
-            brand.value,
-            model.value
+            "Personalizado",
+            aparelhoDigitado
         );
 
+
     },1800);
+
 
 });
