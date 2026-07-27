@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sensi Nivel Xit 😈</title>
+<title>SENSI NÍVEL XIT 😈</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -18,112 +19,182 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 <div class="bg"></div>
 
+<div class="blur blur1"></div>
+<div class="blur blur2"></div>
+
 <div class="container">
 
-<h1>SENSI NIVEL XIT 😈</h1>
+<h1>
 
-<!-- PESQUISA -->
+SENSI NÍVEL XIT 😈
 
-<div class="search-box">
+</h1>
 
-<i class="fa-solid fa-magnifying-glass"></i>
+<p class="sub">
+
+Gerador Inteligente de Sensibilidade
+
+</p>
+
+<div class="pesquisa">
 
 <input
-type="text"
-id="pesquisa"
-placeholder="Pesquise seu aparelho...">
 
-<div id="listaPesquisa"></div>
+type="text"
+
+id="pesquisa"
+
+placeholder="Digite qualquer celular...">
 
 </div>
 
-<!-- SELECTS -->
+<div class="linha">
 
 <select id="brand">
 
-<option value="">Selecione a marca</option>
+<option value="">
+
+Selecione a Marca
+
+</option>
 
 </select>
-
-<select id="model">
-
-<option value="">Selecione o modelo</option>
-
-</select>
-
-<button id="gerarBtn">
-
-GERAR SENSIBILIDADE ⚙️
-
-</button>
-
-<div id="loading" class="loading">
-
-<div class="barra">
-
-<div class="progresso"></div>
 
 </div>
 
-<p>Gerando sensibilidade...</p>
+<div class="linha">
+
+<select id="model">
+
+<option value="">
+
+Selecione o Modelo
+
+</option>
+
+</select>
+
+</div>
+
+<button
+
+id="btn"
+
+onclick="gerar()">
+
+GERAR SENSIBILIDADE
+
+</button>
+
+<div id="loading">
+
+<div class="loader"></div>
+
+<p>
+
+Calculando sensibilidade...
+
+</p>
 
 </div>
 
 <div id="resultado">
 
-Selecione um aparelho.
+Escolha um aparelho ou utilize a pesquisa.
 
 </div>
 
-<div class="social-box">
+<div class="social">
 
-<div class="social-item">
+<a
+
+href="https://www.instagram.com/oliveira2s"
+
+target="_blank">
 
 <i class="fab fa-instagram"></i>
 
-<a
-href="https://instagram.com/Oliveira2s"
-target="_blank">
+<span>
 
-@Oliveira2s
+@oliveira2s
+
+</span>
 
 </a>
 
-</div>
+<a
 
-<div class="social-item">
+href="https://www.tiktok.com/@oliveira2s_"
+
+target="_blank">
 
 <i class="fab fa-tiktok"></i>
 
-<a
-href="https://tiktok.com/@oliveira2s_"
-target="_blank">
+<span>
 
 @oliveira2s_
+
+</span>
 
 </a>
 
 </div>
 
+<div class="circle">
+
+<div class="ring ring1"></div>
+
+<div class="ring ring2"></div>
+
+<div class="ring ring3"></div>
+
+<div class="center">
+
+<i class="fab fa-instagram"></i>
+
+<i class="fab fa-tiktok"></i>
+
+<p>
+
+OLIVEIRA2S
+
+</p>
+
 </div>
 
-<div class="comment-box">
+</div>
 
-<h2>Comentários</h2>
+<div class="comentarios">
+
+<h2>
+
+Comentários
+
+</h2>
 
 <textarea
+
 id="commentInput"
-placeholder="Digite um comentário...">
+
+rows="4"
+
+placeholder="Escreva seu comentário...">
 
 </textarea>
 
-<button id="enviarComentario">
+<button
 
-Enviar Comentário
+onclick="addComment()">
+
+Enviar
 
 </button>
 
-<div id="commentList"></div>
+<div
+
+id="commentList">
+
+</div>
 
 </div>
 
@@ -131,13 +202,9 @@ Enviar Comentário
 
 <script src="celulares.js"></script>
 
-<script src="utils.js"></script>
-
-<script src="pesquisa.js"></script>
-
 <script src="gerador.js"></script>
 
-<script src="comentarios.js"></script>
+<script src="pesquisa.js"></script>
 
 <script src="script.js"></script>
 
