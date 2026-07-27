@@ -64,14 +64,35 @@ brand.addEventListener("change",()=>{
 
 gerarBtn.addEventListener("click",()=>{
 
+    let marcaEscolhida = "";
+    let aparelhoEscolhido = "";
 
-    let aparelhoDigitado = pesquisa.value.trim();
+
+    // PRIMEIRA OPÇÃO:
+    // Usuário escolheu marca e aparelho
+    if(brand.value && model.value){
+
+        marcaEscolhida = brand.value;
+        aparelhoEscolhido = model.value;
+
+    }
 
 
-    if(!aparelhoDigitado){
+    // SEGUNDA OPÇÃO:
+    // Usuário digitou na pesquisa
+    else if(pesquisa.value.trim()){
+
+        marcaEscolhida = "Personalizado";
+        aparelhoEscolhido = pesquisa.value.trim();
+
+    }
+
+
+    // NENHUMA OPÇÃO
+    else{
 
         resultado.innerHTML=`
-        ⚠️ Digite o nome do aparelho.
+        ⚠️ Escolha um aparelho ou digite o nome na pesquisa.
         `;
 
         return;
@@ -90,8 +111,8 @@ gerarBtn.addEventListener("click",()=>{
 
 
         gerarSensibilidade(
-            "Personalizado",
-            aparelhoDigitado
+            marcaEscolhida,
+            aparelhoEscolhido
         );
 
 
